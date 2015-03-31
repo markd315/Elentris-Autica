@@ -21,10 +21,10 @@ Firstly, and importantly, when you cast them, you no longer have that card in yo
 Cards cost gold.  Most do at least.  And gold ain't cheap.  Your first turn, you only have one, then two, then three, and so on.
 They often cost energy too, which starts at 1 and doubles every turn.
 Most spells cost mana.  You can get mana from a lot of sources: minions, other spells, and so on.  You start with 3 and get an additional one every turn.  Spend wisely.
-Weapons and minions sometimes also have a rage cost.  Rage builds by one whenever you attack something or have something attacked; and decreases by one every turn.  Rage minions are generally quite effective for their gold and energy cost.
-Gold is yellow, energy is green, mana is blue, and rage is red.  Track them on the left side of your screen.
+Weapons and minions sometimes also have a rage cost.  Rage builds by one whenever you attack; and decreases by one every turn.  Rage minions are generally quite effective for their gold/energy cost.
+In-game, gold is yellow, energy is green, mana is blue, and rage is red.  Track them on the left side of your screen.
 
-Health is also a resource.  If it's reduced to 0, you fucking lose.  You have 4800.  Don't run out.
+Health is also a resource.  If it's reduced to 0, you fucking lose.  You have 5000.  Don't run out.
 Cards sometimes cost health, and when you attack with a melee weapon, you'll lose life; but most damage will come from enemy minions whaling away at your face.  So kill the enemy minions when it's efficient to.
 Health is the huge red number.  Yeah, that one.
 
