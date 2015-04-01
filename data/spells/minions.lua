@@ -16,7 +16,8 @@ local spell = Card:createMinion(0, 'Schrodinger\'s Paramecium', 2, 0, 0, 'TOXIC 
 	spell.dodgeChance = 0.5;
 	
 local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Choose a type for this minion: FIRE, WATER, or NATURE.', 40, 40);
-	spell.onCast = function() game:chooseOne("FIRE", this():changeType('FIRE'),
-	"WATER", this():changeType('WATER'),
-	"NATURE", this():changeType('NATURE')
+	spell.onCast = function() game:chooseOne(
+	"FIRE", function() this():changeType('FIRE'); end,
+	"WATER", function() this():changeType('WATER'); end,
+	"NATURE", function() this():changeType('NATURE'); end
 	); end;
