@@ -1,7 +1,10 @@
 Card = luajava.bindClass("tcg.Card");
 
-local spell = Card:createMinion(0, 'Dawnbringer', 10, 512, 1, 'End your turn and skip your opponents!', 30, 30);
+local spell = Card:createMinion(0, 'Dawnbringer', 12, 512, 1, 'End your turn and skip your opponents!', 10, 10);
 	spell.onCast = function() game:skipTurn(); end;
+
+local spell = Card:createMinion(0, 'Laerze', 6, 20, 0, 'Destroy your opponent\'s weapon and draw cards equal to the durability.', 34, 50);
+	spell.onCast = function() if this().owner.opponent:hasWeapon() then for i=1, this().owner.opponent.weapon.durability, 1 do this().owner:draw() end; this().owner.opponent.weapon:destroy(); end end;
 	
 local spell = Card:createMinion(0, 'Rouellet', 8, 100, 0, 'Switch decks with your opponent.  On death: Switch back.', 80, 80);
 	spell.onCast = function() this().controller:switchDecks(); end;
