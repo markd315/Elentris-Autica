@@ -36,59 +36,59 @@ local spell = Card:createMinion(0, 'Mystic Dancer', 'SPIRIT', 2, 2, 0, 'SPIRIT',
 
 local spell = Card:createMinion(0, 'Modern Dancer', 'INDUSTRY', 2, 2, 0, 'INDUSTRY', 25, 25);
 
-local spell = Card:createMinion(0, 'Water Priest', 'WATER', 4, 8, 0, 'WATER Deal 20  WATER damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'WATER',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Water Priest', 'WATER', 4, 8, 0, 'WATER Deal 20  WATER damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'WATER',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Fire Priest', 'FIRE', 4, 8, 0, 'FIRE Deal 20  FIRE damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'FIRE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Fire Priest', 'FIRE', 4, 8, 0, 'FIRE Deal 20  FIRE damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'FIRE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Forest Priest', 'NATURE', 4, 8, 0, 'NATURE Deal 20  NATURE damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'NATURE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Forest Priest', 'NATURE', 4, 8, 0, 'NATURE Deal 20  NATURE damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'NATURE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Time Priest', 'TIME', 4, 8, 0, 'TIME Deal 20  TIME damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'TIME',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Time Priest', 'TIME', 4, 8, 0, 'TIME Deal 20  TIME damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'TIME',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Alliance Priest', 'ALLIANCE', 4, 8, 0, 'ALLIANCE Deal 20  ALLIANCE damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'ALLIANCE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Alliance Priest', 'ALLIANCE', 4, 8, 0, 'ALLIANCE Deal 20  ALLIANCE damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'ALLIANCE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Twilight Priest', 'DARK', 4, 8, 0, 'DARK Deal 20  DARK damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'DARK',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Twilight Priest', 'DARK', 4, 8, 0, 'DARK Deal 20  DARK damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'DARK',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Light Priest', 'LIGHT', 4, 8, 0, 'LIGHT Deal 20  LIGHT damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'LIGHT',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Light Priest', 'LIGHT', 4, 8, 0, 'LIGHT Deal 20  LIGHT damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'LIGHT',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Spirit Priest', 'SPIRIT', 4, 8, 0, 'SPIRIT Deal 20  SPIRIT damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'SPIRIT',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Spirit Priest', 'SPIRIT', 4, 8, 0, 'SPIRIT Deal 20  SPIRIT damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'SPIRIT',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Mechanized Priest', 'INDUSTRY', 4, 8, 0, 'INDUSTRY Deal 20  INDUSTRY damage', 22, 22);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(20, 'INDUSTRY',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Mechanized Priest', 'INDUSTRY', 4, 8, 0, 'INDUSTRY Deal 20  INDUSTRY damage.', 22, 22);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(20, 'INDUSTRY',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Water Archmage', 'WATER', 10, 450, 0, 'WATER Deal 60  WATER damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'WATER',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Water Archmage', 'WATER', 10, 450, 0, 'WATER Deal 60  WATER damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'WATER',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Fire Archmage', 'FIRE', 10, 450, 0, 'FIRE Deal 60  FIRE damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'FIRE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Fire Archmage', 'FIRE', 10, 450, 0, 'FIRE Deal 60  FIRE damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'FIRE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Nature Archmage', 'NATURE', 10, 450, 0, 'NATURE Deal 60  NATURE damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'NATURE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Nature Archmage', 'NATURE', 10, 450, 0, 'NATURE Deal 60  NATURE damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'NATURE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Time Archmage', 'TIME', 10, 450, 0, 'TIME Deal 60  TIME damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'TIME',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Time Archmage', 'TIME', 10, 450, 0, 'TIME Deal 60  TIME damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'TIME',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Midnight Archmage', 'DARK', 10, 450, 0, 'DARK Deal 60  DARK damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'DARK',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Midnight Archmage', 'DARK', 10, 450, 0, 'DARK Deal 60  DARK damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'DARK',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Light Archmage', 'LIGHT', 10, 450, 0, 'LIGHT Deal 60  LIGHT damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'LIGHT',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Light Archmage', 'LIGHT', 10, 450, 0, 'LIGHT Deal 60  LIGHT damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'LIGHT',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Alliance Archmage', 'ALLIANCE', 10, 450, 0, 'ALLIANCE Deal 60  ALLIANCE damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'ALLIANCE',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Alliance Archmage', 'ALLIANCE', 10, 450, 0, 'ALLIANCE Deal 60  ALLIANCE damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'ALLIANCE',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Spirit Archmage', 'SPIRIT', 10, 450, 0, 'FIRE Deal 60  FIRE damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'SPIRIT',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Spirit Archmage', 'SPIRIT', 10, 450, 0, 'FIRE Deal 60  FIRE damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'SPIRIT',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Industrial Archmage', 'INDUSTRY', 10, 450, 0, 'INDUSTRY Deal 60  INDUSTRY damage', 65, 65);
-	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():damage(60, 'INDUSTRY',game:currentPlayer()); end); end;
+local spell = Card:createMinion(0, 'Industrial Archmage', 'INDUSTRY', 10, 450, 0, 'INDUSTRY Deal 60  INDUSTRY damage.', 65, 65);
+	spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(60, 'INDUSTRY',game:currentPlayer()); end); end;
 
 local spell = Card:createMinion(0,'Water Summoner', 'WATER', 7, 32, 0, 'WATER.  Summon a WATER 32/32', 65, 50);
 	spell.onCast = function() this().owner:summon('Water Summonee'); end;
