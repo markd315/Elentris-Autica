@@ -1,22 +1,22 @@
 Card = luajava.bindClass("tcg.Card");
 
-local spell = Card:createMinion(0, 'Water Elemental', 'WATER', 5, 5, 0, 'WATER', 30, 50);
+local spell = Card:createMinion(0, 'Water Elemental', 'WATER', 5, 5, 0, 'WATER', 40, 50);
 
-local spell = Card:createMinion(0, 'Fire Elemental', 'FIRE', 5, 5, 0, 'FIRE', 30, 50);
+local spell = Card:createMinion(0, 'Fire Elemental', 'FIRE', 5, 5, 0, 'FIRE', 40, 50);
 
-local spell = Card:createMinion(0, 'Nature Elemental', 'NATURE', 5, 5, 0, 'NATURE', 30, 50);
+local spell = Card:createMinion(0, 'Nature Elemental', 'NATURE', 5, 5, 0, 'NATURE', 40, 50);
 
-local spell = Card:createMinion(0, 'Time Elemental', 'TIME', 5, 5, 0, 'TIME', 30, 50);
+local spell = Card:createMinion(0, 'Time Elemental', 'TIME', 5, 5, 0, 'TIME', 40, 50);
 
-local spell = Card:createMinion(0, 'Unity Elemental', 'ALLIANCE', 5, 5, 0, 'ALLIANCE', 30, 50);
+local spell = Card:createMinion(0, 'Unity Elemental', 'ALLIANCE', 5, 5, 0, 'ALLIANCE', 40, 50);
 
-local spell = Card:createMinion(0, 'Dusk Elemental', 'DARK', 5, 5, 0, 'DARK', 30, 50);
+local spell = Card:createMinion(0, 'Dusk Elemental', 'DARK', 5, 5, 0, 'DARK', 40, 50);
 
-local spell = Card:createMinion(0, 'Light Elemental', 'LIGHT', 5, 5, 0, 'LIGHT', 30, 50);
+local spell = Card:createMinion(0, 'Light Elemental', 'LIGHT', 5, 5, 0, 'LIGHT', 40, 50);
 
-local spell = Card:createMinion(0, 'Other Elemental', 'SPIRIT', 5, 5, 0, 'SPIRIT', 30, 50);
+local spell = Card:createMinion(0, 'Other Elemental', 'SPIRIT', 5, 5, 0, 'SPIRIT', 40, 50);
 
-local spell = Card:createMinion(0, 'Progress Elemental', 'INDUSTRY', 5, 5, 0, 'INDUSTRY', 30, 50);
+local spell = Card:createMinion(0, 'Progress Elemental', 'INDUSTRY', 5, 5, 0, 'INDUSTRY', 40, 50);
 
 local spell = Card:createMinion(0, 'Water Dancer', 'WATER', 2, 2, 0, 'WATER', 26, 28);
 

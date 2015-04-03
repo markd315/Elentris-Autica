@@ -25,3 +25,8 @@ local spell = Card:createSpell(41,'Arcane Foresight', 'NORMAL', 1, 16, 0, 0, 'Co
 	
 local spell = Card:createSpell(41,'Strategic Fury', 'NORMAL', 2, 4, 0, 0, 'Consume all of your rage and draw that many cards.');
 	spell.onCast = function() for i=1,this().owner:useUpRage(),1 do this().owner:draw() end end
+	
+local spell = Card:createSpell(41,'Arcane Readiness', 'NORMAL', 2, 64, 0, 0, 'Double your mana.');
+	spell.onCast = function() this().owner.mana = 2*this().owner.mana; end
+local spell = Card:createSpell(41,'Arcane Readiness', 'NORMAL', 0, 500, 0, 0, 'Gain 5 mana.');
+	spell.onCast = function() this().owner.mana = this().owner.mana+5; end
