@@ -62,3 +62,13 @@ spell.onCast = function() local thaurum = this(); local hp; local atk; game:choo
   thaurum:setMaxHealth(10+hp);
   this().controller.board:remove(this())
 end); end;
+
+local spell = Card:createMinion(0, 'Nightwind', 7, 128, 0, 'DARK.  STEALTH, DIVINE SHIELD.', 50, 30);
+spell.divineShield = true;
+spell.stealth = true;
+
+local spell = Card:createMinion(0, 'Hydraulus', 9, 256, 0, 'Deal between 10 and 100 WATER damage.', 50, 65);
+spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(math.random(10,100), 'WATER',game:currentPlayer()); end); end;
+
+local spell = Card:createMinion(0, 'Loch Ness Monster', 11, 500, 0, 'WATER.  SPLASH.', 80, 110);
+spell.splash = true;

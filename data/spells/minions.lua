@@ -24,7 +24,5 @@ local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Secretly choose a 
 	"TIME", function() this():changeType('TIME'); end,
 	"LIGHT", function() this():changeType('LIGHT'); end,
 	"DARK", function() this():changeType('DARK'); end,
-	"ALLIANCE", function() this():changeType('ALLIANCE'); end,
-	"INDUSTRY", function() this():changeType('INDUSTRY'); end,
-	"SPIRIT", function() this():changeType('SPIRIT'); end
+	"INDUSTRY", function() this():changeType('INDUSTRY'); end
 	); end;
