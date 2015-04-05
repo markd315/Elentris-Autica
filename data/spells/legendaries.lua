@@ -3,6 +3,8 @@ Card = luajava.bindClass("tcg.Card");
 local spell = Card:createMinion(0, 'Dawnbringer', 12, 512, 1, 'End your turn and skip your opponents!', 10, 10);
 spell.onCast = function() game:skipTurn(); end;
 
+local spell = Card:createMinion(0, 'Deceptive Vixen', 'RANDOM', 7, 16, 1, 'Randomly changes types.', 60, 65);
+
 local spell = Card:createMinion(0, 'Laerze', 6, 20, 0, 'Destroy your opponent\'s weapon and draw cards equal to the durability.', 34, 50);
 spell.onCast = function() if this().owner.opponent:hasWeapon() then for i=1, this().owner.opponent.weapon.durability, 1 do this().owner:draw() end; this().owner.opponent.weapon:destroy(); end end;
 
@@ -63,12 +65,12 @@ spell.onCast = function() local thaurum = this(); local hp; local atk; game:choo
   this().controller.board:remove(this())
 end); end;
 
-local spell = Card:createMinion(0, 'Nightwind', 7, 128, 0, 'DARK.  STEALTH, DIVINE SHIELD.', 50, 30);
+local spell = Card:createMinion(0, 'Nightwind', 'DARK', 7, 128, 0, 'DARK.  STEALTH, DIVINE SHIELD.', 50, 30);
 spell.divineShield = true;
 spell.stealth = true;
 
-local spell = Card:createMinion(0, 'Hydraulus', 9, 256, 0, 'Deal between 10 and 100 WATER damage.', 50, 65);
+local spell = Card:createMinion(0, 'Hydraulus', 'WATER', 9, 256, 0, 'Deal between 10 and 100 WATER damage.', 50, 65);
 spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(math.random(10,100), 'WATER',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Loch Ness Monster', 11, 500, 0, 'WATER.  SPLASH.', 80, 110);
+local spell = Card:createMinion(0, 'Loch Ness Monster', 'WATER', 11, 500, 0, 'WATER.  SPLASH.', 80, 110);
 spell.splash = true;
