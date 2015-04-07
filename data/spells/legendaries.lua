@@ -16,6 +16,9 @@ local spell = Card:createMinion(0, 'Aggrizar Frostrage', 12, 2048, 0, 'Freeze a 
 spell.onCast = function() game:chooseTarget(character,function() this():freeze(); end); end;
 spell.onDamageDealt = function() if enemy() and this().controller ~= other().controller then this():freeze(); end end
 
+local spell = Card:createMinion(0, 'Drake Hatefall', 6, 100, 0, 'Mark a minion to die at the start of your next turn.', 52, 66);
+spell.onCast = function() game:chooseTarget(minion,function() this():markForDeath(); end); end;
+
 local spell = Card:createMinion(0, 'Annison Runebender', 7, 60, 0, 'All spells cost 3 more mana.', 60, 80);
 spell.onCast = function() local source = this(); this():addGlobalAura('MANACOST',function() if this().card.type == 'spell' then return 3 else return 0 end end,false); end;
 
@@ -27,7 +30,7 @@ local spell = Card:createMinion(0,'Gwenyth Bladestar', 9, 256, 0, 'Deal 60 damag
 spell.onCast = function() local source=this(); game:damageForEach(function() return character and this()~=source end, 'NORMAL', 60, source.owner); end;
 
 local spell = Card:createMinion(0,'Xalvador the Conqueror', 6, 28, 0, 'Steal a minion with 30 or fewer attack.', 40, 65);
-spell.onCast = 	function() game:chooseTarget(function() return enemyMinion() and this():getAttack() <= 30 end, function()
+spell.onCast = function() local source = this(); game:chooseTarget(function() return enemyMinion() and this():getAttack() <= 30 end, function()
   this().controller.board:remove(this());
   this().controller = source.owner;
   source.owner.board:add(this());
