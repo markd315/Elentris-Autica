@@ -12,9 +12,12 @@ local spell = Card:createMinion(0, 'Rouellet', 8, 100, 0, 'Switch decks with you
 spell.onCast = function() this().controller:switchDecks(); end;
 spell.onDeath = function() this().controller:switchDecks(); end;
 
-local spell = Card:createMinion(0, 'Aggrizar Frostrage', 12, 2048, 0, 'Freeze a character.  Freeze anything that this minion deals damage to.', 120, 125);
+local spell = Card:createMinion(0, 'Aggrizar Frostrage', 12, 2048, 1, 'Freeze a character.  Freeze anything that this minion deals damage to.', 120, 125);
 spell.onCast = function() game:chooseTarget(character,function() this():freeze(); end); end;
 spell.onDamageDealt = function() if enemy() and this().controller ~= other().controller then this():freeze(); end end
+
+local spell = Card:createMinion(0, 'Sheoth Sagehelm', 6, 32, 1, 'SHIELD: 50', 36, 55);
+spell.shield = 50;
 
 local spell = Card:createMinion(0, 'Drake Hatefall', 6, 100, 0, 'Mark a minion to die at the start of your next turn.', 52, 66);
 spell.onCast = function() game:chooseTarget(minion,function() this():markForDeath(); end); end;
@@ -36,6 +39,36 @@ spell.onCast = function() local source = this(); game:chooseTarget(function() re
   source.owner.board:add(this());
   this().sick = true; end
 ) end;
+
+local spell = Card:createMinion(0, 'Deity', 15, 0, 10, 'CHARGE, WINDFURY, LIFESTEAL, TAUNT, SHROUD, SPLASH, RANGED, STEALTH, DIVINE SHIELD.', 100, 100);
+spell.divineShield = true;
+spell.stealth = true;
+spell.charge = true;
+spell.windfury = true;
+spell.lifeSteal = true;
+spell.taunt = true;
+spell.shroud = true;
+spell.splash = true;
+spell.isRanged = true;
+
+local spell = Card:createMinion(0, 'Nyssen Illim', 8, 0, 0, 'CHARGE, ENRAGE: +100 Attack', 30, 90);
+  spell.onCast = function() this():addAura('ATTACK',function() if damaged() then return 100 else return 0 end end,false); end;
+  spell.charge = true;
+
+local spell = Card:createMinion(0, 'Awryb Steelpaw', 11, 0, 0, 'TAUNT, DIVINE SHIELD', 50, 170);
+  spell.divineShield = true;
+  spell.taunt = true;
+  
+local spell = Card:createMinion(0, 'Soulgleam Prismaul', 5, 0, 3, 'LIFESTEAL, SPLASH', 40, 30);
+  spell.lifeSteal = true;
+  spell.splash = true;
+  
+local spell = Card:createMinion(0, 'Time-lost Drake', 15, 3000, 0, 'Always drawn after all other cards in its library.', 250, 300, "Dragon");
+  spell.drawnLast = true;
+  
+local spell = Card:createMinion(0, 'Eydrifr Malison', 4, 4, 1, 'RANGED.  Heal 20 health.', 25, 35);
+  spell.isRanged = true;
+  spell.onCast = function() game:chooseTarget(character,function() this():heal(20); end); end;
 
 local spell = Card:createMinion(0, 'Andrejana Fasthoof', 'NATURE', 7, 64, 0, 'NATURE.  CHARGE.  DIVINE SHIELD.', 50, 75);
 spell.charge = true;
