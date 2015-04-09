@@ -70,11 +70,11 @@ local spell = Card:createMinion(0, 'Eydrifr Malison', 4, 4, 1, 'RANGED.  Heal 20
   spell.isRanged = true;
   spell.onCast = function() game:chooseTarget(character,function() this():heal(20); end); end;
 
-local spell = Card:createMinion(0, 'Andrejana Fasthoof', 'NATURE', 7, 64, 0, 'NATURE.  CHARGE.  DIVINE SHIELD.', 50, 75);
+local spell = Card:createMinion(0, 'Andrejana Fasthoof', 'NATURE', 7, 64, 0, 'CHARGE.  DIVINE SHIELD.', 50, 75);
 spell.charge = true;
 spell.divineShield = true;
 
-local spell = Card:createMinion(0,'Stormraven', 'NATURE', 10, 128, 1, 'NATURE.  Assume control of a random enemy minion.', 50, 40);
+local spell = Card:createMinion(0,'Stormraven', 'NATURE', 10, 128, 1, 'Assume control of a random enemy minion.', 50, 40);
 spell.onCast = function() local source = this();
   game:forEachRandom(1,enemyMinion,function()
     this().controller.board:remove(this());
@@ -84,12 +84,12 @@ spell.onCast = function() local source = this();
   end);
 end;
 
-local spell = Card:createMinion(0,'Pyroborn', 'FIRE', 12, 300, 2, 'FIRE.  Deal 20 FIRE damage to all enemies.  On Death: Summon a 30/50 Fire Elemental.', 120, 100);
+local spell = Card:createMinion(0,'Pyroborn', 'FIRE', 12, 300, 2, 'Deal 20 FIRE damage to all enemies.  On Death: Summon a 30/50 Fire Elemental.', 120, 100);
 spell.onDeath = function() this().controller:summon('Fire Elemental'); end;
 spell.onCast = function() local source=this(); game:damageForEach(enemy, 'FIRE', 20, source.owner); end;
 local spell = Card:createMinion(0, 'Fire Elemental', 'FIRE', 5, 5, 0, 'FIRE', 30, 50);
 
-local spell = Card:createMinion(0,'Phoenix', 'FIRE', 9, 60, 0, 'FIRE.  On Death: Add a Phoenix to your hand.', 90, 70);
+local spell = Card:createMinion(0,'Phoenix', 'FIRE', 9, 60, 0, 'On Death: Add a Phoenix to your hand.', 90, 70);
 spell.onDeath = function() this().controller:drawCard('Phoenix'); end;
 
 local spell = Card:createMinion(0, 'Thaurum Shadowmaw', 'DARK', 8, 120, 0, 'Consume a minion and gain its attack and health.', 10, 10);
@@ -101,12 +101,12 @@ spell.onCast = function() local thaurum = this(); local hp; local atk; game:choo
   this().controller.board:remove(this())
 end); end;
 
-local spell = Card:createMinion(0, 'Nightwind', 'DARK', 7, 128, 0, 'DARK.  STEALTH, DIVINE SHIELD.', 50, 30);
+local spell = Card:createMinion(0, 'Nightwind', 'DARK', 7, 128, 0, 'STEALTH, DIVINE SHIELD.', 50, 30);
 spell.divineShield = true;
 spell.stealth = true;
 
 local spell = Card:createMinion(0, 'Hydraulus', 'WATER', 9, 256, 0, 'Deal between 10 and 100 WATER damage.', 50, 65);
 spell.onCast = function() local source = this(); game:chooseTarget(character, function() this():typedDamage(math.random(10,100), 'WATER',game:currentPlayer()); end); end;
 
-local spell = Card:createMinion(0, 'Loch Ness Monster', 'WATER', 11, 500, 0, 'WATER.  SPLASH.', 80, 110);
+local spell = Card:createMinion(0, 'Loch Ness Monster', 'WATER', 11, 500, 0, 'SPLASH.', 80, 110);
 spell.splash = true;
