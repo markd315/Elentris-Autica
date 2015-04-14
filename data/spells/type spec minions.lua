@@ -16,3 +16,6 @@ local spell = Card:createMinion(0,'Firefly', 'FIRE', 'NORMAL', 1, 1, 0, 'CAMOUFL
 
 local spell = Card:createMinion(0, '3 Tailed Scorpion', 'NATURE', 1, 1, 0, 'SPLASH.', 14, 10);
 	spell.splash = true;
+
+local spell = Card:createMinion(0, 'Backfiring Invention', 'INDUSTRY', 1, 1, 0, 'When drawn, deal 60 INDUSTRY damage to your character', 30, 22);
+  spell.onDrawn = function() this().owner:typedDamage(60, 'INDUSTRY',this().owner); end;
