@@ -1,9 +1,9 @@
 Card = luajava.bindClass("tcg.Card");
 
-local spell = Card:createSpell(156,'Firebolt', 'FIRE', 3, 2, 1, 0, 'Deal $SPELL_POWER:40$ FIRE damage');
+local spell = Card:createSpell(156,'Firebolt', 'FIRE', 3, 3, 1, 0, 'Deal $SPELL_POWER:40$ FIRE damage');
 	spell.onCast = function() game:chooseTarget(character, function() this():spellDamage(40,'FIRE',game:currentPlayer()); end ); end
 
-local spell = Card:createSpell(198,'Ice Ray', 'WATER', 2, 0, 1, 0, 'Deal $SPELL_POWER:28$ WATER damage and freeze');
+local spell = Card:createSpell(198,'Ice Ray', 'WATER', 2, 1, 1, 0, 'Deal $SPELL_POWER:28$ WATER damage and freeze');
 	spell.onCast = function() game:chooseTarget(character,function() this():spellDamage(28,'WATER',game:currentPlayer()); this():freeze(); end); end;
 
 local spell = Card:createSpell(326,'Draw 4', 'NORMAL', 5, 16, 5, 0, 'Draw 4 cards.');
