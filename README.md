@@ -8,23 +8,22 @@ Cards can be spells, minions, or weapons and have varied effects.
 
 Most cards have a "type" that affects their interactions with the rest of the game.
 For example, fire minions will deal double damage to and take half damage from nature minions.  Nature spells will only have .5x effectiveness against fire minions, and so on.
-There are 9 types.
+There are 7 types, plus a normal delineation.
 Fire beats nature, but loses to water.
 Industry beats nature, but loses to time, which loses to nature.
-Industry beats spirit, but loses to alliance, which loses to spirit.
 Dark beats nature, but loses to light, which loses to nature.
 In gaming, we call these interactions "combat triangles," and they're key to balancing all sorts of games from Pokemon to Runescape.
-Industry is double-treed, and Nature is triple-treed.  This means that the types matter in an increased number of situations for those types; which can be good or bad.
+Nature is triple-treed.  This means that the types matter in an increased number of situations for those types; which can be good or bad.
 
 Cards aren't free.
 Firstly, and importantly, when you cast them, you no longer have that card in your hand.  That's just how it works.  Sorry man.
 Cards cost gold.  Most do at least.  And gold ain't cheap.  Your first turn, you only have one, then two, then three, and so on.
 They often cost energy too, which starts at 1 and doubles every turn.
 Most spells cost mana.  You can get mana from a lot of sources: minions, other spells, and so on.  You start with 3 and get an additional one every turn.  Spend wisely.
-Weapons and minions sometimes also have a rage cost.  Rage builds by one whenever you attack; and decreases by one every turn.  Rage minions are generally quite effective for their gold/energy cost.
-In-game, gold is yellow, energy is green, mana is blue, and rage is red.  Track them on the left side of your screen.
+Weapons and minions sometimes also have a rage cost.  Rage builds by one whenever you attack something or have something attacked; and decreases by one every turn.  Rage minions are generally quite effective for their gold and energy cost.
+Gold is yellow, energy is green, mana is blue, and rage is red.  Track them on the left side of your screen.
 
-Health is also a resource.  If it's reduced to 0, you fucking lose.  You have 5000.  Don't run out.
+Health is also a resource.  If it's reduced to 0, you fucking lose.  You have 4800.  Don't run out.
 Cards sometimes cost health, and when you attack with a melee weapon, you'll lose life; but most damage will come from enemy minions whaling away at your face.  So kill the enemy minions when it's efficient to.
 Health is the huge red number.  Yeah, that one.
 
@@ -71,19 +70,31 @@ COOLDOWN: After attacking, this minion needs a turn to recover.
 
 DEFENDER: This minion cannot attack at all.
 
+LIFESTEAL: Whenever it's attacked by another character or attacks another character, this minion heals for the amount of damage it deals.
+
 CAMOUFLAGE(Type): During the opponents turn, the minion becomes the following type.
 
 SHROUD: Cannot be targeted by spells, yours or your opponents.
 
 SILENCE: All card text is disabled, including the above effects.
 
+TOXIC SKIN: This minion destroys anything it deals damage to.
+
+MISS: This minion has an X% chance of missing and hitting a different random enemy.
+
+DODGE: This minion has an X% chance of dodging incoming damage, leaving another friendly character to recieve the attack.
+
+POISONED: This minion takes X NORMAL damage every turn.
+
+BURNED: This minion takes X FIRE damage every turn.
+
 Some tips:
 Trade minions effectively.  If you can kill a minion and leave yours alive, do it almost every time.  Trading a 200/350 water into a 600/400 fire is amazing value.  You just killed a much bigger minion and still have use of yours.
 Read the text on cards and learn them.  Some cards do crazy shit.
-Beware the weapon bait!  You might play a flaming broadsword to kill a nature drop, but then your opponent plays a water minion with 1250 attack.  Uh-oh.  If that thing hits your face, or if god forbid, you have to hit it, you're taking 2500 damage.  That's like, more than half your health bro.  You probably just lost
+Beware the weapon bait!  You might play a flaming broadsword to kill a nature drop, but then your opponent plays a water minion with 125 attack.  Uh-oh.  If that thing hits your face, or if god forbid, you have to hit it, you're taking 250 damage.  That's like, more than half your health bro.  You probably just lost.
 Mulligan properly.  If you don't want to play a minion in the first couple turns, reshuffle that shit and draw again.
 Not every game is winnable, even if your deck is good and you make no mistakes.  The game is designed so that some strategies counter others; and inevitably you'll have games where you don't hit any of your earlies.  Sux.
-Do the math before using a spell or minion on anything.  You don't want to get over-excited and miss something, leaving your opponent with a 125/3 and yourself with nothing, and no way to deal 3 damage.
+Do the math before using a spell or minion on anything.  You don't want to get over-excited and miss something, leaving your opponent with a 60/1 and yourself with nothing, and no way to deal 1 damage.
 Play the cards, don't let them play you.
 
-Got an idea?  I want to hear it and add it.  HMU: markd315@gmail.com
+Got an idea?  I want to hear it and maybe add it.  HMU: markd315@gmail.com

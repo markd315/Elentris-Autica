@@ -1,0 +1,61 @@
+Assumptions:
+stats MB starts out high at 1 gold, and drops bc of inherent card value.  At about 6 it balloons back up bc of removal, reaching the same high MB at 9.
+ideal distribution starts out at high atk/low hp because of trading up.  At 4-5, health becomes favored bc of AOE and removal dmg.
+AOE starts out very costly compared to targeted, but climbs back up in power bc it kills more bigger targets.
+Typed is better for cheap cards bc of the 2-for-1ing bigger creatures, but straight is better in higher numbers.
+Direct damage is at a premium early on for removing minions because of damage addition and dealing with threats.  At higher values it overkills many creatures.
+
+
+Costings:
+Card only:
+20 in stats.
+10 typed damage
+
+1 gold/1 energy gets you:
+37 in stats.
+20 typed damage.
+
+2 gold/2 energy gets you:
+52 in stats
+30 typed damage.
+10 typed damage AOE.
+
+3 gold/4 energy gets you:
+66 stats +14
+40 typed damage +10
+20 typed damage AOE. +10 
+
+4 gold/8 energy gets you:
+78 stats +12
+48 typed damage +8
+28 typed damage AOE. +8
+
+5 gold/16 energy gets you:
+90 stats +12
+58 typed damage. +10
+36 typed AOE +8
+
+6 gold/32 energy gets you:
+103 stats +13
+70 typed damage. +12
+46 typed AOE. +8
+
+7:
+117 stats +14
+84 typed damage. +14
+56 typed AOE +10
+
+8:
+134 stats +17
+100 typed damage. +16
+68 typed AOE +12
+
+9:
+153 stats +19
+118 typed damage. +18
+82 typed AOE +14
+
+10:
+175 stats +22
+136 typed damnage.
+100 typed AOE. +18
