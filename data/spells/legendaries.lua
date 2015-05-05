@@ -36,10 +36,10 @@ spell.onCast = function() local source = this(); this():addGlobalAura('MANACOST'
 
 local spell = Card:createMinion(0, 'Andrejana Fasthoof', 'NATURE', 7, 64, 0, 'CHARGE.  DIVINE SHIELD.', 64, 30);
 spell.charge = true;
-spell.divineShield = true;
+spell.angelicHalo = true;
 
 local spell = Card:createMinion(0, 'Nightwind', 'DARK', 7, 128, 0, 'STEALTH, DIVINE SHIELD.', 68, 30);
-spell.divineShield = true;
+spell.angelicHalo = true;
 spell.stealth = true;
 
 local spell = Card:createMinion(0, 'Rouellet', 8, 100, 0, 'Switch decks with your opponent.  On death: Switch back.', 60, 65);
@@ -83,7 +83,7 @@ spell.onCast = function() local source = this();
 end;
 
 local spell = Card:createMinion(0, 'Awryb Steelpaw', 11, 0, 0, 'TAUNT, DIVINE SHIELD', 50, 100); --210 stats, 1.8 power effect
-  spell.divineShield = true;
+  spell.angelicHalo = true;
   spell.taunt = true;
   
 local spell = Card:createMinion(0, 'Loch Ness Monster', 'WATER', 11, 500, 0, 'SPLASH.', 80, 110); --190 stats, 2.0 power effect
@@ -102,7 +102,7 @@ spell.onCast = function() game:chooseTarget(character,function() this():freeze()
 spell.onDamageDealt = function() if enemy() and this().controller ~= other().controller then this():freeze(); end end
 
 local spell = Card:createMinion(0, 'Deity', 15, 0, 10, 'CHARGE, WINDFURY, LIFESTEAL, TAUNT, SHROUD, SPLASH, RANGED, STEALTH, DIVINE SHIELD.', 100, 100);
-spell.divineShield = true;
+spell.angelicHalo = true;
 spell.stealth = true;
 spell.charge = true;
 spell.windfury = true;
