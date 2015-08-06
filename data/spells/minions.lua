@@ -26,3 +26,4 @@ local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Secretly choose a 
 	"DARK", function() this():changeType('DARK'); end,
 	"INDUSTRY", function() this():changeType('INDUSTRY'); end
 	); end;
+	

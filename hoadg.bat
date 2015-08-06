@@ -1,2 +1,2 @@
-java -jar "C:\Users\Riven\Desktop\Heroes-of-a-Dying-Galaxy\hoadg.jar"
+java -jar "C:\Users\Riven\Desktop\HOADG\Heroes-of-a-Dying-Galaxy\hoadg.jar"
 pause
