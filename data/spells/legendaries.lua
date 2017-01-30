@@ -115,3 +115,21 @@ spell.isRanged = true;
   
 local spell = Card:createMinion(0, 'Time-lost Drake', 15, 3000, 1, 'Always drawn after all other cards in its library.', 150, 200, "Dragon");
   spell.drawnLast = true;
+  
+local spell = Card:createMinion(0,'Peary Cook', 6, 32, 1, 'Equip a 30/2 weapon', 40, 22);
+	spell.onDeath = function() this().owner:equip('Powerful Cutlass'); end; --give three mana according to john?
+local spell = Card:createWeapon(231,'Powerful Cutlass', 'NORMAL', 0, 0, 0, '', 30, 2);
+
+local spell = Card:createMinion(0,'Seath Dar', 5, 32, 0, 'Unsummon a minion', 60, 12);
+	spell.onCast = function() game:chooseTarget(enemyMinion, function() this():unsummon() end); end;
+	
+local spell = Card:createMinion(0,'Phineas Nyquam', 3, 25, 0, 'When drawn, freeze all characters', 35, 35);
+	spell.onDrawn = function() local source=this(); game:forEach(character,function()
+    this():freeze();
+	end);end;
+	
+local spell = Card:createMinion(0,'Darius Svinhildr', 4, 8, 1, 'Stealthed minions receive +40/+40 boost', 48, 30);
+	spell.onCast = function() game:forEach(character,function()
+	if this().stealth ==true then this():gain(40,40) end
+	end);end;
+	

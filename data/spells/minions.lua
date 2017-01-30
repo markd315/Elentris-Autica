@@ -15,7 +15,7 @@ local spell = Card:createMinion(0, 'Schrodinger\'s Paramecium', 2, 0, 0, 'TOXIC 
 	spell.isToxic = true;
 	spell.dodgeChance = 0.5;
 	
-local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Secretly choose a type for this minion.', 38, 38);
+local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Secretly choose a type for this minion.', 38, 40);
 	spell.onCast = function() game:chooseOne(
 	"NORMAL", function() this():changeType('NORMAL'); end,
 	"FIRE", function() this():changeType('FIRE'); end,
@@ -26,4 +26,3 @@ local spell = Card:createMinion(0, 'Shapeshifter', 5, 16, 0, 'Secretly choose a 
 	"DARK", function() this():changeType('DARK'); end,
 	"INDUSTRY", function() this():changeType('INDUSTRY'); end
 	); end;
-	
