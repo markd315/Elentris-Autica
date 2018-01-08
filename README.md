@@ -1,8 +1,7 @@
-# Heroes-of-a-Dying-Galaxy
-A dank ass-TCG. (https://xkcd.com/37/)
+# Elentris-Autica
 
 To play, run the jar or batch file, and select your deck.
-There are 2.3 fucktons of cards, most of which you don't know, but you can learn.  For now, the basics.
+There are a ton of cards, most of which you don't know, but you can learn.  For now, the basics.
 Every turn, you draw a card, can play cards, attack with your minions, attack with a weapon, and so on.
 Cards can be spells, minions, or weapons and have varied effects.
 
@@ -94,7 +93,7 @@ Read the text on cards and learn them.  Some cards do crazy shit.
 Beware the weapon bait!  You might play a flaming broadsword to kill a nature drop, but then your opponent plays a water minion with 125 attack.  Uh-oh.  If that thing hits your face, or if god forbid, you have to hit it, you're taking 250 damage.  That's like, more than half your health bro.  You probably just lost.
 Mulligan properly.  If you don't want to play a minion in the first couple turns, reshuffle that shit and draw again.
 Not every game is winnable, even if your deck is good and you make no mistakes.  The game is designed so that some strategies counter others; and inevitably you'll have games where you don't hit any of your earlies.  Sux.
-Do the math before using a spell or minion on anything.  You don't want to get over-excited and miss something, leaving your opponent with a 60/1 and yourself with nothing, and no way to deal 1 damage.
+Do the math before using a spell or minion on anything.  You don't want to get over-excited and miss something, leaving your opponent with a 600/1 and yourself with nothing, and no way to deal 1 damage.
 Play the cards, don't let them play you.
 
 Got an idea?  I want to hear it and maybe add it.  HMU: markd315@gmail.com
