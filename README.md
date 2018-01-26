@@ -31,7 +31,7 @@ Unless they're ranged, though, your face will take damage.  So use a rubber.
 
 Unlike most shitty card games, this game is good; and has a unique card draw system.  Early on, you'll draw cards from your "early" subdeck, and late in the game, from your "reserve" subdeck.
 This allows you to control your game more effectively!  Use it to your advantage.  There will naturally be minions that are good early on, but shitty later; and spells that you don't want in your opening hand.
-The early subdeck can be 0-8 cards big.  The reserve subdeck, 0-10 cards.  Your total deck has to be between 20 and 60 cards, so you've got a lot of flexibilty.  Go crazy, nigga.
+The early subdeck can be 0-8 cards big.  The reserve subdeck, 0-10 cards.  Your total deck has to be between 20 and 60 cards, so you've got a lot of flexibilty.  Go crazy, bro.
 During deckbuilding, seperate the subdecks with asterisks.  You have examples to learn from.
 If you want the specifics (cuz you might), the chances of drawing from the "early" pile start at 35% and drop by 10% each turn, stopping at 2%, and the odds of drawing from the "reserve" pile start at 4% and increase by 2% every turn until the end of time.
 
