@@ -67,8 +67,8 @@ public class Game
 	public void init()
 	{
 		this.current = 0;
-		this.currentPlayer().opponent = this.currentOpponent();
-		this.currentOpponent().opponent = this.currentPlayer();
+		this.currentPlayer().setOpponent(this.currentOpponent());
+		this.currentOpponent().setOpponent(this.currentPlayer());
 		for(final Player p : this.players)
 			for(int i = 0; i < 4; ++i)
 				p.blockedDraw();
@@ -79,16 +79,16 @@ public class Game
 	public void start()
 	{
 		this.state = GameState.CAST_SPELL;
-		this.currentPlayer().maxGold = 1;
-		this.currentPlayer().maxEnergy = 1;
-		this.currentPlayer().mana = 3;
-		this.currentPlayer().rage = 0;
-		this.currentPlayer().energy = 1;
-		this.currentPlayer().gold = 1;
+		this.currentPlayer().setMaxGold(1);
+		this.currentPlayer().setMaxEnergy(1);
+		this.currentPlayer().setMana(3);
+		this.currentPlayer().setRage(0);
+		this.currentPlayer().setEnergy(1);
+		this.currentPlayer().setGold(1);
 		for(final Player p : this.players)
-			while(p.hand.size() < 5)
+			while(p.getHand().size() < 5)
 				p.blockedDraw();
-		this.currentOpponent().hand.add(new Spell(Card.get("Tricard"), currentOpponent(), Card.get("Tricard").getTyping()));
+		this.currentOpponent().getHand().add(new Spell(Card.get("Tricard"), currentOpponent(), Card.get("Tricard").getTyping()));
 		this.combatLog.clear();
 		this.log("Turn " + this.turn + ": " + this.currentPlayer().name);
 	}
@@ -109,19 +109,19 @@ public class Game
 		for(final Player p : this.players)
 		{
 			l.add(p);
-			for(final Minion m : p.board)
+			for(final Minion m : p.getBoard())
 				l.add(m);
 		}
 		for(final Character c : l)
 		{
-			if(c.controller == this.currentPlayer())
+			if(c.getController() == this.currentPlayer())
 			{
 				c.unfreeze();
 				if(c.poisoned > 0)
 					c.damage(c.poisoned, "NORMAL", this.currentOpponent());
 				if(c.burned > 0)
 					c.damage(c.burned, "FIRE", this.currentOpponent());
-				if(c instanceof Minion && ((Minion)c).markedForDeath)
+				if(c instanceof Minion && ((Minion)c).isMarkedForDeath())
 					c.destroy();
 			}
 			c.onEvent(Event.END_OF_TURN, c, null);
@@ -132,22 +132,22 @@ public class Game
 			for(final Aura a : remove)
 				this.globalAuras.remove(a);
 			remove.clear();
-			for(final Aura a : c.auras)
+			for(final Aura a : c.getAuras())
 				if(a.expires)
 					remove.add(a);
 			for(final Aura a : remove)
-				c.auras.remove(a);
+				c.getAuras().remove(a);
 			if(c instanceof Player)
 			{
 				final Player p2 = (Player)c;
 				if(!p2.hasWeapon())
 					continue;
 				remove.clear();
-				for(final Aura a2 : p2.weapon.auras)
+				for(final Aura a2 : p2.getWeapon().getAuras())
 					if(a2.expires)
 						remove.add(a2);
 				for(final Aura a2 : remove)
-					p2.weapon.auras.remove(a2);
+					p2.getWeapon().getAuras().remove(a2);
 			}
 		}
 		this.current = (this.current + 1) % this.players.size();
@@ -158,20 +158,20 @@ public class Game
 		this.spellCount = 0;
 		this.minionsPlayed = 0;
 		final Player p3 = this.currentPlayer();
-		if(p3.maxGold < 15)
+		if(p3.getMaxGold() < 15)
 		{
 			final Player player = p3;
-			++player.maxGold;
+			player.setMaxGold(player.getMaxGold() + 1);
 		}
-		p3.gold = p3.maxGold - p3.inflation;
-		p3.mana++;
-		p3.rage = Math.max(0, p3.rage - 1);
-		p3.inflation = 0;
-		p3.flux = 1;
+		p3.setGold(p3.getMaxGold() - p3.getInflation());
+		p3.setMana(p3.getMana() + 1);
+		p3.setRage(Math.max(0, p3.getRage() - 1));
+		p3.setInflation(0);
+		p3.setFlux(1);
 		p3.attackCount = 0;
-		for(final Minion i : p3.board)
+		for(final Minion i : p3.getBoard())
 		{
-			i.sick = false;
+			i.setSick(false);
 			i.attackCount = 0;
 		}
 		p3.draw();
@@ -179,25 +179,25 @@ public class Game
 		for(final Player p : this.players)
 		{
 			l.add(p);
-			for(final Minion m : p.board)
+			for(final Minion m : p.getBoard())
 				l.add(m);
 		}
 		for(final Character c : l)
 			c.onEvent(Event.START_OF_TURN, c, null);
-		p3.maxEnergy = 2 * p3.maxEnergy;
-		if(p3.maxEnergy == 0)
-			p3.maxEnergy = 1;
-		p3.energy = p3.getMaxEnergy() / p3.flux;
-		if(p3.maxGold == 15)
-			p3.energy = p3.maxEnergy = Integer.MAX_VALUE;
+		p3.setMaxEnergy(2 * p3.getMaxEnergy());
+		if(p3.getMaxEnergy() == 0)
+			p3.setMaxEnergy(1);
+		p3.setEnergy(p3.getMaxEnergy() / p3.getFlux());
+		if(p3.getMaxGold() == 15)
+			p3.setEnergy(p3.setMaxEnergy(Integer.MAX_VALUE));
 	}
 
 	public Character randomEnemyExcept(Character d)
 	{
 		ArrayList<Character> c = new ArrayList<Character>();
-		for(Minion m : d.owner.board)
+		for(Minion m : d.getOwner().getBoard())
 			c.add(m);
-		c.add(d.owner);
+		c.add(d.getOwner());
 		Random r = new Random();
 		return c.get(r.nextInt(c.size()));
 	}
@@ -207,21 +207,21 @@ public class Game
 		List<Character> l = new LinkedList<Character>();
 		for(final Player p : this.players)
 		{
-			p.energy = p.maxEnergy;
+			p.setEnergy(p.getMaxEnergy());
 			l.add(p);
-			for(final Minion m : p.board)
+			for(final Minion m : p.getBoard())
 				l.add(m);
 		}
 		for(final Character c : l)
 		{
-			if(c.controller == this.currentPlayer())
+			if(c.getController() == this.currentPlayer())
 			{
 				c.unfreeze();
 				if(c.poisoned > 0)
 					c.damage(c.poisoned, "NORMAL", this.currentOpponent());
 				if(c.burned > 0)
 					c.damage(c.burned, "FIRE", this.currentOpponent());
-				if(c instanceof Minion && ((Minion)c).markedForDeath)
+				if(c instanceof Minion && ((Minion)c).isMarkedForDeath())
 					c.destroy();
 			}
 			c.onEvent(Event.END_OF_TURN, c, null);
@@ -232,22 +232,22 @@ public class Game
 			for(final Aura a : remove)
 				this.globalAuras.remove(a);
 			remove.clear();
-			for(final Aura a : c.auras)
+			for(final Aura a : c.getAuras())
 				if(a.expires)
 					remove.add(a);
 			for(final Aura a : remove)
-				c.auras.remove(a);
+				c.getAuras().remove(a);
 			if(c instanceof Player)
 			{
 				final Player p2 = (Player)c;
 				if(!p2.hasWeapon())
 					continue;
 				remove.clear();
-				for(final Aura a2 : p2.weapon.auras)
+				for(final Aura a2 : p2.getWeapon().getAuras())
 					if(a2.expires)
 						remove.add(a2);
 				for(final Aura a2 : remove)
-					p2.weapon.auras.remove(a2);
+					p2.getWeapon().getAuras().remove(a2);
 			}
 		}
 		++this.turn;
@@ -256,20 +256,20 @@ public class Game
 		this.spellCount = 0;
 		this.minionsPlayed = 0;
 		final Player p3 = this.currentPlayer();
-		if(p3.maxGold < 15)
+		if(p3.getMaxGold() < 15)
 		{
 			final Player player = p3;
-			++player.maxGold;
+			player.setMaxGold(player.getMaxGold() + 1);
 		}
-		p3.gold = p3.maxGold - p3.inflation;
-		p3.mana++;
-		p3.rage = Math.max(0, p3.rage - 1);
-		p3.inflation = 0;
-		p3.flux = 1;
+		p3.setGold(p3.getMaxGold() - p3.getInflation());
+		p3.setMana(p3.getMana() + 1);
+		p3.setRage(Math.max(0, p3.getRage() - 1));
+		p3.setInflation(0);
+		p3.setFlux(1);
 		p3.attackCount = 0;
-		for(final Minion i : p3.board)
+		for(final Minion i : p3.getBoard())
 		{
-			i.sick = false;
+			i.setSick(false);
 			i.attackCount = 0;
 		}
 		p3.draw();
@@ -277,17 +277,17 @@ public class Game
 		for(final Player p : this.players)
 		{
 			l.add(p);
-			for(final Minion m : p.board)
+			for(final Minion m : p.getBoard())
 				l.add(m);
 		}
 		for(final Character c : l)
 			c.onEvent(Event.START_OF_TURN, c, null);
-		p3.maxEnergy = 2 * p3.getMaxEnergy();
-		if(p3.maxEnergy == 0)
-			p3.maxEnergy = 1;
-		p3.energy = p3.getMaxEnergy() / p3.flux;
-		if(p3.maxGold == 15)
-			p3.energy = p3.maxEnergy = Integer.MAX_VALUE;
+		p3.setMaxEnergy(2 * p3.getMaxEnergy());
+		if(p3.getMaxEnergy() == 0)
+			p3.setMaxEnergy(1);
+		p3.setEnergy(p3.getMaxEnergy() / p3.getFlux());
+		if(p3.getMaxGold() == 15)
+			p3.setEnergy(p3.setMaxEnergy(Integer.MAX_VALUE));
 	}
 
 	public void combat(final Character attacker, final Character defender)
@@ -298,7 +298,7 @@ public class Game
 	public void combat(final Character attacker, final Character defender, boolean alreadyMissed)
 	{
 		this.log(String.valueOf(attacker.name) + " attacks " + String.valueOf(defender.name));
-		if(((Math.random() < attacker.missChance || Math.random() < defender.dodgeChance)) && defender.owner.board.size() > 0 && !alreadyMissed)
+		if(((Math.random() < attacker.missChance || Math.random() < defender.dodgeChance)) && defender.getOwner().getBoard().size() > 0 && !alreadyMissed)
 		{
 			this.log("But misses instead!");
 			combat(attacker, randomEnemyExcept(defender), true);
@@ -414,20 +414,20 @@ public class Game
 			attacker.freeze(2);
 		this.postDamage();
 		if(attacker instanceof Player && ((Player)attacker).hasWeapon())
-			((Player)attacker).weapon.looseDurability(-1);
+			((Player)attacker).getWeapon().looseDurability(-1);
 	}
 
 	public void postDamage()
 	{
-		++this.currentPlayer().rage;
+		this.currentPlayer().setRage(this.currentPlayer().getRage() + 1);
 		final LinkedList<Minion> dead = new LinkedList<Minion>();
 		for(final Player p : this.players)
-			for(final Minion m : p.board)
+			for(final Minion m : p.getBoard())
 				if(m.getHealth() <= 0)
 					dead.add(m);
 		for(final Minion i : dead)
 		{
-			i.controller.board.remove(i);
+			i.getController().getBoard().remove(i);
 			this.log(String.valueOf(i.name) + " dies");
 			i.onEvent(Event.DEATH, i, null);
 		}
@@ -443,8 +443,8 @@ public class Game
 		{
 			if("true".equals(this.invoke(filter, p).toString()))
 				targets.add(p);
-			for(final Minion m : p.board)
-				if(!m.shroud && "true".equals(this.invoke(filter, m).toString()))
+			for(final Minion m : p.getBoard())
+				if(!m.isShroud() && "true".equals(this.invoke(filter, m).toString()))
 					targets.add(m);
 		}
 		return targets;
@@ -509,7 +509,7 @@ public class Game
 
 	public void spellDamageForEach(final LuaFunction filter, Type t, int d, final Character source)
 	{
-		d += source.owner.sumByStat(Stat.SPELL_POWER);
+		d += source.getOwner().sumByStat(Stat.SPELL_POWER);
 		this.assignDamageForEach(this.validTargets(filter), t, d, source);
 	}
 
@@ -525,7 +525,7 @@ public class Game
 
 	public void spellDamageForEachRandom(final int count, final LuaFunction filter, final String t, int d, final Character source)
 	{
-		d += source.owner.sumByStat(Stat.SPELL_POWER);
+		d += source.getOwner().sumByStat(Stat.SPELL_POWER);
 		List<Character> targets = this.validTargets(filter);
 		Collections.shuffle(targets);
 		Type type = Card.typeTranslate(t);
@@ -615,10 +615,10 @@ public class Game
 		this.globalAuras.remove(aura);
 		for(final Player player : this.players)
 		{
-			player.secrets.remove(aura);
-			player.auras.remove(aura);
-			for(final Minion m : player.board)
-				m.auras.remove(aura);
+			player.getSecrets().remove(aura);
+			player.getAuras().remove(aura);
+			for(final Minion m : player.getBoard())
+				m.getAuras().remove(aura);
 		}
 	}
 

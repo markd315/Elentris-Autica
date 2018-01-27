@@ -33,12 +33,12 @@ import javax.swing.JPanel;
 public class Client extends JFrame
 {
 	private static final long serialVersionUID = 1L;
-	Game game;
-	Character attacker;
-	Spell spell;
-	Minion hover;
-	LinkedList<Target> targets;
-	LinkedList<Target> minions;
+	private Game game;
+	private Character attacker;
+	private Spell spell;
+	private Minion hover;
+	private LinkedList<Target> targets;
+	private LinkedList<Target> minions;
 
 	boolean findTarget(final int x, final int y)
 	{
@@ -119,13 +119,13 @@ public class Client extends JFrame
 				Player player = Client.this.game.players.get(0);
 				int y = 330;
 				int x = 250;
-				for(final Spell spell : player.hand)
+				for(final Spell spell : player.getHand())
 				{
 					this.drawSpell(g, spell, x, y + 140);
-					x += ((player.hand.size() <= maxCards) ? 140 : ((cw - 140) / (player.hand.size() - 1)));
+					x += ((player.getHand().size() <= maxCards) ? 140 : ((cw - 140) / (player.getHand().size() - 1)));
 				}
 				x = 250;
-				for(final Minion minion : player.board)
+				for(final Minion minion : player.getBoard())
 				{
 					this.drawMinion(g, player, minion, x, y + 0);
 					x += 100;
@@ -135,13 +135,13 @@ public class Client extends JFrame
 				player = Client.this.game.players.get(1);
 				y = -20;
 				x = 250;
-				for(final Spell spell : player.hand)
+				for(final Spell spell : player.getHand())
 				{
 					this.drawSpell(g, spell, x, y);
-					x += ((player.hand.size() <= maxCards) ? 140 : ((cw - 140) / (player.hand.size() - 1)));
+					x += ((player.getHand().size() <= maxCards) ? 140 : ((cw - 140) / (player.getHand().size() - 1)));
 				}
 				x = 250;
-				for(final Minion minion : player.board)
+				for(final Minion minion : player.getBoard())
 				{
 					this.drawMinion(g, player, minion, x, y + 210);
 					x += 100;
@@ -165,7 +165,7 @@ public class Client extends JFrame
 				} else
 					g.drawImage(this.images.get("endturn"), 10, 310, null);
 				if(Client.this.hover != null)
-					g.drawImage(this.getCardImage(Client.this.hover.controller, null, Client.this.hover.card, false), 40, 200, 217, 337, null);
+					g.drawImage(this.getCardImage(Client.this.hover.getController(), null, Client.this.hover.getCard(), false), 40, 200, 217, 337, null);
 				if(Client.this.game.state == GameState.CHOOSE_ONE)
 				{
 					x = 300;
@@ -292,7 +292,7 @@ public class Client extends JFrame
 						final String[] data = d.substring(start + 1, end).split(":");
 						amount = Integer.parseInt(data[1]) + owner.sumByStat(Stat.valueOf(data[0]));
 					}
-					g.setFont(g.getFont().deriveFont(17.0f));
+					g.setFont(g.getFont().deriveFont(19.0f));
 					final FontRenderContext frc = g.getFontRenderContext();
 					final AttributedString styledText = new AttributedString(d);
 					styledText.addAttribute(TextAttribute.FONT, g.getFont());
@@ -318,12 +318,12 @@ public class Client extends JFrame
 			void drawSpell(final Graphics2D gg, final Spell s, final int x, final int y)
 			{
 				boolean active = false;
-				if(Client.this.game.state == GameState.MULLIGAN || (Client.this.game.state == GameState.CAST_SPELL && Client.this.game.currentPlayer() == s.owner && s.owner.getGold() >= s.getGoldCost() && s.owner.mana >= s.getManaCost() && s.owner.energy >= s.getEnergyCost() && s.owner.rage >= s.getRageCost()))
+				if(Client.this.game.state == GameState.MULLIGAN || (Client.this.game.state == GameState.CAST_SPELL && Client.this.game.currentPlayer() == s.getOwner() && s.getOwner().getGold() >= s.getGoldCost() && s.getOwner().getMana() >= s.getManaCost() && s.getOwner().getEnergy() >= s.getEnergyCost() && s.getOwner().getRage() >= s.getRageCost()))
 				{
 					active = true;
 					Client.this.targets.add(new Target(x, y, 155, 242, s));
 				}
-				gg.drawImage(this.getCardImage(s.owner, s, s.card, active), x, y, 155, 242, null);
+				gg.drawImage(this.getCardImage(s.getOwner(), s, s.getCard(), active), x, y, 155, 242, null);
 			}
 
 			void drawMinion(final Graphics2D gg, final Player p, final Minion m, final int x, final int y)
@@ -332,9 +332,9 @@ public class Client extends JFrame
 				{
 					boolean active = false;
 					boolean canTarget = false;
-					if(Client.this.game.state == GameState.TARGET && !m.shroud)
+					if(Client.this.game.state == GameState.TARGET && !m.isShroud())
 						canTarget = "true".equals(Client.this.game.invoke(Client.this.game.filter, m).toString());
-					if((Client.this.game.state == GameState.CAST_SPELL && Client.this.game.currentPlayer() == m.controller && m.getAttack() > 0 && (!m.sick || m.hasCharge()) && !m.frozen() && (m.attackCount == 0 || (m.windfury && m.attackCount < 2)) && !m.defender) || (Client.this.game.state == GameState.ATTACK && Client.this.game.currentPlayer() != m.controller && !m.stealth && (!m.controller.hasTaunt() || m.taunt)) || (Client.this.game.state == GameState.TARGET && canTarget))
+					if((Client.this.game.state == GameState.CAST_SPELL && Client.this.game.currentPlayer() == m.getController() && m.getAttack() > 0 && (!m.isSick() || m.hasCharge()) && !m.frozen() && (m.attackCount == 0 || (m.windfury && m.attackCount < 2)) && !m.isDefender()) || (Client.this.game.state == GameState.ATTACK && Client.this.game.currentPlayer() != m.getController() && !m.stealth && (!m.getController().hasTaunt() || m.isTaunt())) || (Client.this.game.state == GameState.TARGET && canTarget))
 					{
 						gg.setColor(Color.green);
 						if(Client.this.game.state == GameState.TARGET)
@@ -346,7 +346,7 @@ public class Client extends JFrame
 					final BufferedImage card = new BufferedImage(311, 484, 2);
 					final Graphics2D g = (Graphics2D)card.getGraphics();
 					g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-					g.drawImage(this.images.get("cardframe_minion_battle" + (m.taunt ? "_taunt" : "") + (active ? ((Client.this.game.state == GameState.TARGET || Client.this.game.state == GameState.ATTACK) ? "_target" : "_active") : "")), 0, 0, null);
+					g.drawImage(this.images.get("cardframe_minion_battle" + (m.isTaunt() ? "_taunt" : "") + (active ? ((Client.this.game.state == GameState.TARGET || Client.this.game.state == GameState.ATTACK) ? "_target" : "_active") : "")), 0, 0, null);
 					//TODO Minion gfx here, card disp is done.
 					if(m.frozen())
 						g.drawImage(this.images.get("cardframe_minion_battle_frozen"), 0, 0, null);
@@ -354,7 +354,7 @@ public class Client extends JFrame
 						g.drawImage(this.images.get("cardframe_minion_battle_stealth"), 0, 0, null);
 					if(m.angelicHalo)
 						g.drawImage(this.images.get("cardframe_minion_battle_shield"), 0, 0, null);
-					if(m.sick && !m.hasCharge())
+					if(m.isSick() && !m.hasCharge())
 						g.drawImage(this.images.get("sick"), 200, 50, null);
 					g.setFont(new Font("Impact", Font.PLAIN, 25));
 					g.drawString(Integer.toString(m.getAttack()), 92, 238);
@@ -385,9 +385,9 @@ public class Client extends JFrame
 				else
 					g.drawString(String.valueOf(p.getEnergy()) + " / " + p.getMaxEnergy(), x + 150, y + 150);
 				g.setColor(Color.blue);
-				g.drawString(String.valueOf(p.mana), x + 150, y + 180);
+				g.drawString(String.valueOf(p.getMana()), x + 150, y + 180);
 				g.setColor(Color.red);
-				g.drawString(String.valueOf(p.rage), x + 150, y + 210);
+				g.drawString(String.valueOf(p.getRage()), x + 150, y + 210);
 				g.setFont(this.getFont().deriveFont(20.0f));
 				g.setColor(Color.yellow);
 				g.drawString(new StringBuilder().append(p.getAttack()).toString(), x + 20, y + 100);
@@ -395,11 +395,11 @@ public class Client extends JFrame
 				g.drawString(new StringBuilder().append(p.getHealth()).toString(), x + 90, y + 100);
 				g.setColor(Color.gray);
 				g.drawString(new StringBuilder().append(p.armor).toString(), x + 90, y + 80);
-				if(p.weapon != null)
+				if(p.getWeapon() != null)
 				{
 					g.setColor(Color.yellow);
-					g.drawString(new StringBuilder().append(p.weapon.getAttack()).toString(), x + 145, y + 70);
-					g.drawString(new StringBuilder().append(p.weapon.durability).toString(), x + 195, y + 70);
+					g.drawString(new StringBuilder().append(p.getWeapon().getAttack()).toString(), x + 145, y + 70);
+					g.drawString(new StringBuilder().append(p.getWeapon().getDurability()).toString(), x + 195, y + 70);
 				}
 				boolean canTarget = false;
 				if(Client.this.game.state == GameState.TARGET)
@@ -442,16 +442,16 @@ public class Client extends JFrame
 					if(o instanceof Spell)
 					{
 						final Spell s = (Spell)o;
-						s.owner.hand.remove(s);
-						s.owner.midLibrary.add(s);
-						s.owner.shuffle();
+						s.getOwner().getHand().remove(s);
+						s.getOwner().getMidLibrary().add(s);
+						s.getOwner().shuffle();
 					}
 				} else if(Client.this.game.state == GameState.CAST_SPELL)
 				{
 					if(o.equals("end"))
 						Client.this.game.endTurn();
 					if(o instanceof Spell)
-						if(((Spell)o).card.type.equals("minion"))
+						if(((Spell)o).getCard().type.equals("minion"))
 						{
 							Client.this.spell = (Spell)o;
 							Client.this.game.state = GameState.SUMMON;
