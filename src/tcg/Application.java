@@ -14,7 +14,7 @@ public class Application {
 	static ScriptEngine engine;
 	static Bindings bindings;
 
-	public static void main(final String[] args) { throws Exception
+	public static void main(final String[] args) throws Exception { 
 		final ScriptEngineManager sem = new ScriptEngineManager();
 		Application.engine = sem.getEngineByExtension(".lua");
 		Application.bindings = Application.engine.createBindings();
