@@ -4,18 +4,18 @@ import org.luaj.vm2.LuaClosure;
 import org.luaj.vm2.LuaFunction;
 
 public class Triggerable {
-	private LuaClosure onCast;
-	private LuaClosure onDamage;
-	private LuaClosure onDamageDealt;
-	private LuaClosure onDeath;
-	private LuaClosure onStartOfTurn;
-	private LuaClosure onEndOfTurn;
-	private LuaClosure onHeal;
-	private LuaClosure onDraw;
-	private LuaClosure onAttack;
-	private LuaClosure onSecretRevealed;
-	private LuaClosure onSummon;
-	private LuaClosure onDrawn;
+	public LuaClosure onCast;
+	public LuaClosure onDamage;
+	public LuaClosure onDamageDealt;
+	public LuaClosure onDeath;
+	public LuaClosure onStartOfTurn;
+	public  LuaClosure onEndOfTurn;
+	public  LuaClosure onHeal;
+	public LuaClosure onDraw;
+	public  LuaClosure onAttack;
+	public  LuaClosure onSecretRevealed;
+	public  LuaClosure onSummon;
+	public  LuaClosure onDrawn;
 	private static/* synthetic */int[] $SWITCH_TABLE$tcg$Event;
 
 	public static enum Type {
