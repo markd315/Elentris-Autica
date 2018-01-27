@@ -292,7 +292,7 @@ public class Client extends JFrame
 						final String[] data = d.substring(start + 1, end).split(":");
 						amount = Integer.parseInt(data[1]) + owner.sumByStat(Stat.valueOf(data[0]));
 					}
-					g.setFont(g.getFont().deriveFont(17.0f));
+					g.setFont(g.getFont().deriveFont(19.0f));
 					final FontRenderContext frc = g.getFontRenderContext();
 					final AttributedString styledText = new AttributedString(d);
 					styledText.addAttribute(TextAttribute.FONT, g.getFont());
