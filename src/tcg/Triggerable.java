@@ -9,13 +9,13 @@ public class Triggerable {
 	public LuaClosure onDamageDealt;
 	public LuaClosure onDeath;
 	public LuaClosure onStartOfTurn;
-	public  LuaClosure onEndOfTurn;
-	public  LuaClosure onHeal;
+	public LuaClosure onEndOfTurn;
+	public LuaClosure onHeal;
 	public LuaClosure onDraw;
-	public  LuaClosure onAttack;
-	public  LuaClosure onSecretRevealed;
-	public  LuaClosure onSummon;
-	public  LuaClosure onDrawn;
+	public LuaClosure onAttack;
+	public LuaClosure onSecretRevealed;
+	public LuaClosure onSummon;
+	public LuaClosure onDrawn;
 	private static/* synthetic */int[] $SWITCH_TABLE$tcg$Event;
 
 	public static enum Type {

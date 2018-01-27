@@ -76,4 +76,5 @@ public class Weapon extends GameObject {
 	public void setDurability(int durability) {
 		this.durability = durability;
 	}
+
 }

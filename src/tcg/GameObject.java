@@ -6,11 +6,11 @@ import java.util.List;
 import org.luaj.vm2.LuaClosure;
 
 public class GameObject {
-	private Player owner;
-	private Player controller;
-	private Game game;
-	private static LinkedList<EventObject> eventStack;
-	private List<Aura> auras;
+	protected Player owner;
+	protected Player controller;
+	protected Game game;
+	protected static LinkedList<EventObject> eventStack;
+	protected List<Aura> auras;
 	static {
 		GameObject.eventStack = new LinkedList<EventObject>();
 	}
