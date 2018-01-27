@@ -9,16 +9,16 @@ import java.util.LinkedList;
 
 public class Deck
 {
-	LinkedList<Card> earlySpells;
-	LinkedList<Card> midSpells;
-	LinkedList<Card> lateSpells;
+	private LinkedList<Card> earlySpells;
+	private LinkedList<Card> midSpells;
+	private LinkedList<Card> lateSpells;
 
 	public Deck(final File file)
 	{
 		super();
-		this.earlySpells = new LinkedList<Card>();
-		this.midSpells = new LinkedList<Card>();
-		this.lateSpells = new LinkedList<Card>();
+		this.setEarlySpells(new LinkedList<Card>());
+		this.setMidSpells(new LinkedList<Card>());
+		this.setLateSpells(new LinkedList<Card>());
 		try
 		{
 			final BufferedReader fr = new BufferedReader(new FileReader(file));
@@ -29,7 +29,7 @@ public class Deck
 				final Card spell = Card.get(data[1].trim());
 				if(spell != null)
 					for(int i = 0; i < Integer.parseInt(data[0].trim()); ++i)
-						this.earlySpells.add(spell);
+						this.getEarlySpells().add(spell);
 				else
 					System.err.println("spell not found: " + data[1].trim());
 			}
@@ -40,7 +40,7 @@ public class Deck
 				if(spell != null)
 					for(int i = 0; i < Integer.parseInt(data[0].trim()); ++i)
 					{
-						this.midSpells.add(spell);
+						this.getMidSpells().add(spell);
 					}
 				else
 					System.err.println("spell not found: " + data[1].trim());
@@ -51,13 +51,13 @@ public class Deck
 				final Card spell = Card.get(data[1].trim());
 				if(spell != null)
 					for(int i = 0; i < Integer.parseInt(data[0].trim()); ++i)
-						this.lateSpells.add(spell);
+						this.getLateSpells().add(spell);
 				else
 					System.err.println("spell not found: " + data[1].trim());
 			}
 			fr.close();
 			int y=2;
-			if (earlySpells.size() > 8 || lateSpells.size() > 10 || (earlySpells.size()+midSpells.size()+lateSpells.size())>60 || (earlySpells.size()+midSpells.size()+lateSpells.size())<20)
+			if (getEarlySpells().size() > 8 || getLateSpells().size() > 10 || (getEarlySpells().size()+getMidSpells().size()+getLateSpells().size())>60 || (getEarlySpells().size()+getMidSpells().size()+getLateSpells().size())<20)
 			{
 				System.out.println("Invalid deck!");
 				y=0;
@@ -67,5 +67,29 @@ public class Deck
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public LinkedList<Card> getEarlySpells() {
+		return earlySpells;
+	}
+
+	public void setEarlySpells(LinkedList<Card> earlySpells) {
+		this.earlySpells = earlySpells;
+	}
+
+	public LinkedList<Card> getMidSpells() {
+		return midSpells;
+	}
+
+	public void setMidSpells(LinkedList<Card> midSpells) {
+		this.midSpells = midSpells;
+	}
+
+	public LinkedList<Card> getLateSpells() {
+		return lateSpells;
+	}
+
+	public void setLateSpells(LinkedList<Card> lateSpells) {
+		this.lateSpells = lateSpells;
 	}
 }

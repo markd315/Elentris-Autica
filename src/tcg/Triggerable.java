@@ -3,174 +3,231 @@ package tcg;
 import org.luaj.vm2.LuaClosure;
 import org.luaj.vm2.LuaFunction;
 
-
-public class Triggerable
-{
-	public LuaClosure onCast;
-	public LuaClosure onDamage;
-	public LuaClosure onDamageDealt;
-	public LuaClosure onDeath;
-	public LuaClosure onStartOfTurn;
-	public LuaClosure onEndOfTurn;
-	public LuaClosure onHeal;
-	public LuaClosure onDraw;
-	public LuaClosure onAttack;
-	public LuaClosure onSecredRevealed;
-	public LuaClosure onSummon;
-	public LuaClosure onDrawn;
+public class Triggerable {
+	private LuaClosure onCast;
+	private LuaClosure onDamage;
+	private LuaClosure onDamageDealt;
+	private LuaClosure onDeath;
+	private LuaClosure onStartOfTurn;
+	private LuaClosure onEndOfTurn;
+	private LuaClosure onHeal;
+	private LuaClosure onDraw;
+	private LuaClosure onAttack;
+	private LuaClosure onSecretRevealed;
+	private LuaClosure onSummon;
+	private LuaClosure onDrawn;
 	private static/* synthetic */int[] $SWITCH_TABLE$tcg$Event;
-	public static enum Type
-	{
+
+	public static enum Type {
 		NATURE, FIRE, INDUSTRY, DARK, LIGHT, AQUA, TIME, NORMAL, RANDOM
 	}
-	public LuaFunction getTrigger(final Event e)
-	{
-		switch($SWITCH_TABLE$tcg$Event()[e.ordinal()])
-		{
-			case 1:
-			{
-				return this.onAttack;
-			}
-			case 2:
-			{
-				return this.onDamage;
-			}
-			case 3:
-			{
-				return this.onDamageDealt;
-			}
-			case 4:
-			{
-				return this.onStartOfTurn;
-			}
-			case 5:
-			{
-				return this.onEndOfTurn;
-			}
-			case 6:
-			{
-				return this.onDeath;
-			}
-			case 7:
-			{
-				return this.onCast;
-			}
-			case 8:
-			{
-				return this.onHeal;
-			}
-			case 9:
-			{
-				return this.onDraw;
-			}
-			case 10:
-			{
-				return this.onSecredRevealed;
-			}
-			case 11:
-			{
-				return this.onSummon;
-			}
-			case 12:
-			{
-				return this.onDrawn;
-			}
-			default:
-			{
-				System.err.println("unknown trigger: " + e);
-				return null;
-			}
+
+	public LuaFunction getTrigger(final Event e) {
+		switch ($SWITCH_TABLE$tcg$Event()[e.ordinal()]) {
+		case 1: {
+			return this.getOnAttack();
+		}
+		case 2: {
+			return this.getOnDamage();
+		}
+		case 3: {
+			return this.getOnDamageDealt();
+		}
+		case 4: {
+			return this.getOnStartOfTurn();
+		}
+		case 5: {
+			return this.getOnEndOfTurn();
+		}
+		case 6: {
+			return this.getOnDeath();
+		}
+		case 7: {
+			return this.getOnCast();
+		}
+		case 8: {
+			return this.getOnHeal();
+		}
+		case 9: {
+			return this.getOnDraw();
+		}
+		case 10: {
+			return this.getOnSecretRevealed();
+		}
+		case 11: {
+			return this.getOnSummon();
+		}
+		case 12: {
+			return this.getOnDrawn();
+		}
+		default: {
+			System.err.println("unknown trigger: " + e);
+			return null;
+		}
 		}
 	}
 
-	public void applyToAura(final Aura a)
-	{
-		a.onCast = this.onCast;
-		a.onDamage = this.onDamage;
-		a.onDamageDealt = this.onDamageDealt;
-		a.onDeath = this.onDeath;
-		a.onStartOfTurn = this.onStartOfTurn;
-		a.onEndOfTurn = this.onEndOfTurn;
-		a.onHeal = this.onHeal;
-		a.onDraw = this.onDraw;
-		a.onAttack = this.onAttack;
-		a.onSecredRevealed = this.onSecredRevealed;
-		a.onSummon = this.onSummon;
-		a.onDrawn = this.onDrawn;
+	public void applyToAura(final Aura a) {
+		a.setOnCast(this.getOnCast());
+		a.setOnDamage(this.getOnDamage());
+		a.setOnDamageDealt(this.getOnDamageDealt());
+		a.setOnDeath(this.getOnDeath());
+		a.setOnStartOfTurn(this.getOnStartOfTurn());
+		a.setOnEndOfTurn(this.getOnEndOfTurn());
+		a.setOnHeal(this.getOnHeal());
+		a.setOnDraw(this.getOnDraw());
+		a.setOnAttack(this.getOnAttack());
+		a.setOnSecretRevealed(this.getOnSecretRevealed());
+		a.setOnSummon(this.getOnSummon());
+		a.setOnDrawn(this.getOnDrawn());
 	}
 
-	static/* synthetic */int[] $SWITCH_TABLE$tcg$Event()
-	{
+	private LuaClosure getOnSecretRevealed() {
+		return onSecretRevealed;
+	}
+
+	public void setOnSecretRevealed(LuaClosure onSecretRevealed) {
+		this.onSecretRevealed = onSecretRevealed;
+
+	}
+
+	static/* synthetic */int[] $SWITCH_TABLE$tcg$Event() {
 		final int[] $switch_TABLE$tcg$Event = Triggerable.$SWITCH_TABLE$tcg$Event;
-		if($switch_TABLE$tcg$Event != null)
+		if ($switch_TABLE$tcg$Event != null)
 			return $switch_TABLE$tcg$Event;
 		final int[] $switch_TABLE$tcg$Event2 = new int[Event.values().length];
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.ATTACK.ordinal()] = 1;
-		} catch(NoSuchFieldError noSuchFieldError)
-		{
+		} catch (NoSuchFieldError noSuchFieldError) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.CAST.ordinal()] = 7;
-		} catch(NoSuchFieldError noSuchFieldError2)
-		{
+		} catch (NoSuchFieldError noSuchFieldError2) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.DAMAGE.ordinal()] = 2;
-		} catch(NoSuchFieldError noSuchFieldError3)
-		{
+		} catch (NoSuchFieldError noSuchFieldError3) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.DAMAGE_DEALT.ordinal()] = 3;
-		} catch(NoSuchFieldError noSuchFieldError4)
-		{
+		} catch (NoSuchFieldError noSuchFieldError4) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.DEATH.ordinal()] = 6;
-		} catch(NoSuchFieldError noSuchFieldError5)
-		{
+		} catch (NoSuchFieldError noSuchFieldError5) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.DRAW.ordinal()] = 9;
-		} catch(NoSuchFieldError noSuchFieldError6)
-		{
+		} catch (NoSuchFieldError noSuchFieldError6) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.END_OF_TURN.ordinal()] = 5;
-		} catch(NoSuchFieldError noSuchFieldError7)
-		{
+		} catch (NoSuchFieldError noSuchFieldError7) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.HEAL.ordinal()] = 8;
-		} catch(NoSuchFieldError noSuchFieldError8)
-		{
+		} catch (NoSuchFieldError noSuchFieldError8) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.SECRET_REVEALED.ordinal()] = 10;
-		} catch(NoSuchFieldError noSuchFieldError9)
-		{
+		} catch (NoSuchFieldError noSuchFieldError9) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.START_OF_TURN.ordinal()] = 4;
-		} catch(NoSuchFieldError noSuchFieldError10)
-		{
+		} catch (NoSuchFieldError noSuchFieldError10) {
 		}
-		try
-		{
+		try {
 			$switch_TABLE$tcg$Event2[Event.SUMMON.ordinal()] = 11;
-		} catch(NoSuchFieldError noSuchFieldError11)
-		{
+		} catch (NoSuchFieldError noSuchFieldError11) {
 		}
 		return Triggerable.$SWITCH_TABLE$tcg$Event = $switch_TABLE$tcg$Event2;
+	}
+
+	public LuaClosure getOnDrawn() {
+		return onDrawn;
+	}
+
+	public void setOnDrawn(LuaClosure onDrawn) {
+		this.onDrawn = onDrawn;
+	}
+
+	public LuaClosure getOnCast() {
+		return onCast;
+	}
+
+	public void setOnCast(LuaClosure onCast) {
+		this.onCast = onCast;
+	}
+
+	public LuaClosure getOnDamage() {
+		return onDamage;
+	}
+
+	public void setOnDamage(LuaClosure onDamage) {
+		this.onDamage = onDamage;
+	}
+
+	public LuaClosure getOnDamageDealt() {
+		return onDamageDealt;
+	}
+
+	public void setOnDamageDealt(LuaClosure onDamageDealt) {
+		this.onDamageDealt = onDamageDealt;
+	}
+
+	public LuaClosure getOnDeath() {
+		return onDeath;
+	}
+
+	public void setOnDeath(LuaClosure onDeath) {
+		this.onDeath = onDeath;
+	}
+
+	public LuaClosure getOnStartOfTurn() {
+		return onStartOfTurn;
+	}
+
+	public void setOnStartOfTurn(LuaClosure onStartOfTurn) {
+		this.onStartOfTurn = onStartOfTurn;
+	}
+
+	public LuaClosure getOnEndOfTurn() {
+		return onEndOfTurn;
+	}
+
+	public void setOnEndOfTurn(LuaClosure onEndOfTurn) {
+		this.onEndOfTurn = onEndOfTurn;
+	}
+
+	public LuaClosure getOnHeal() {
+		return onHeal;
+	}
+
+	public void setOnHeal(LuaClosure onHeal) {
+		this.onHeal = onHeal;
+	}
+
+	public LuaClosure getOnDraw() {
+		return onDraw;
+	}
+
+	public void setOnDraw(LuaClosure onDraw) {
+		this.onDraw = onDraw;
+	}
+
+	public LuaClosure getOnAttack() {
+		return onAttack;
+	}
+
+	public void setOnAttack(LuaClosure onAttack) {
+		this.onAttack = onAttack;
+	}
+
+	public LuaClosure getOnSummon() {
+		return onSummon;
+	}
+
+	public void setOnSummon(LuaClosure onSummon) {
+		this.onSummon = onSummon;
 	}
 }
